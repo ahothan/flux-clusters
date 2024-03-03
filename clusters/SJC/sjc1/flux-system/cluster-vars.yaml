@@ -1,0 +1,9 @@
+# CONFIGMAP FOR CLUSTER SPECIFIC VARIABLES
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cluster-vars
+  namespace: flux-system
+data:
+  clusterName: "sjc1"

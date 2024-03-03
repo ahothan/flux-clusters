@@ -6,4 +6,4 @@ metadata:
   name: dc-vars
   namespace: flux-system
 data:
-
+  dcName: "SJC"
