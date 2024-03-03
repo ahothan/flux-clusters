@@ -1,0 +1,9 @@
+
+# CONFIGMAP FOR DC VARIABLES APPLICABLE TO ALL CLUSTERS IN THIS DC
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dc-vars
+  namespace: flux-system
+data:
+

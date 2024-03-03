@@ -1,0 +1,9 @@
+
+# CONFIGMAP FOR GLOBAL VARIABLES APPLICABLE TO ALL CLUSTERS IN THIS CLUSTER GROUP
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: global-vars
+  namespace: flux-system
+data:
+
