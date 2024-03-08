@@ -6,4 +6,10 @@ metadata:
   name: cluster-vars
   namespace: flux-system
 data:
-  clusterName: "sjc1"
+  podinfoReplicas: "3"
+  podinfoMessage: "Hello from KubeCon"
+  podinfoCpuRequest: "1000m"
+  podinfoMemoryRequest: "16Mi"
+  podinfoRedisURL: "redis://podinfo-redis:6379"
+  podinfoRedisEnabled: "true"
+  podinfoColor: "#FF0000"
