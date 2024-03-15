@@ -1,0 +1,12 @@
+# CONFIGMAP FOR CLUSTER SPECIFIC VARIABLES
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cluster-vars
+  namespace: flux-system
+data:
+  podinfoReplicas: "1"
+  podinfoMessage: "Hello from sfo1"
+  podinfoRedisEnabled: "false"
+  podinfoColor: "#0000FF"
