@@ -7,8 +7,7 @@ metadata:
   namespace: flux-system
 data:
   podinfoReplicas: "3"
-  podinfoMessage: "Hello from KubeCon"
-  podinfoCpuRequest: "1000m"
+  podinfoMessage: "Hello from sjc1"
   podinfoMemoryRequest: "16Mi"
   podinfoRedisURL: "redis://podinfo-redis:6379"
   podinfoRedisEnabled: "true"

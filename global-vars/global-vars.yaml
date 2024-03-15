@@ -6,4 +6,4 @@ metadata:
   name: global-vars
   namespace: flux-system
 data:
-
+  podinfoCpuRequest: "50m"
