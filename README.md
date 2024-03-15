@@ -37,3 +37,70 @@ There are 3 levels of configuration variable overlays, from highest to lowest pr
 - DC level variables shared by all clusters in same DC (dc-vars.yaml)
 - global variables shared by all clusters (global-vars.yaml)
 
+## Quick start guide
+
+### Pre-requisites
+
+It is assumed you have:
+
+- a k8s cluster and KUBECONFIG set accordingly
+- flux cli installed (version 2.2.3+)
+- fork this git repository
+- GITHUB_TOKEN must be set to your PAT (Personal Access Token) with admin permission
+- USER variable contains your github personal account name
+
+### Bootstrap
+
+You can pick any cluster path available to test. For example, to deploy the blueprint associated to the SFO/sfo1 cluster:
+
+```text
+flux bootstrap github --private=false --personal=true --owner=$USER --repository=flux-clusters --path=clusters/SFO/sfo1
+```
+
+Example of run output:
+
+```text
+► connecting to github.com
+► cloning branch "main" from Git repository "https://github.com/ahothan/flux-clusters.git"
+✔ cloned repository
+► generating component manifests
+✔ generated component manifests
+✔ component manifests are up to date
+► installing components in "flux-system" namespace
+✔ installed components
+✔ reconciled components
+► determining if source secret "flux-system/flux-system" exists
+
+...
+
+✔ reconciled source secret
+► generating sync manifests
+✔ generated sync manifests
+✔ sync manifests are up to date
+► applying sync manifests
+✔ reconciled sync configuration
+◎ waiting for GitRepository "flux-system/flux-system" to be reconciled
+✔ GitRepository reconciled successfully
+◎ waiting for Kustomization "flux-system/flux-system" to be reconciled
+✔ Kustomization reconciled successfully
+► confirming components are healthy
+✔ helm-controller: deployment ready
+✔ kustomize-controller: deployment ready
+✔ notification-controller: deployment ready
+✔ source-controller: deployment ready
+✔ all components are healthy
+```
+
+Resulting pods in the podinfo namespace:
+
+```text
+$ kubectl get pod -n podinfo
+NAME                       READY   STATUS    RESTARTS   AGE
+podinfo-5dbd6f94d8-5bqhf   1/1     Running   0          22s
+```
+
+### Change configuration
+
+You can modify any configuration variable in any of the configmap files, commit changes and let Flux reconcile.
+For example set the number or replicas to 3 and enable Redis (similar to values in SJC/sjc1/cluster-vars.yaml).
+
